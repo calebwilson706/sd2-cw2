@@ -1,5 +1,7 @@
 package org.example.DataStructures;
 
+import java.util.NoSuchElementException;
+
 public class Stack<T> {
     private Node<T> top;
 
@@ -12,14 +14,14 @@ public class Stack<T> {
     }
 
     public void push(T value) {
-        Node<T> newNode = new Node<T>(value);
+        Node<T> newNode = new Node<>(value);
         newNode.setNext(this.top);
         this.top = newNode;
     }
 
     public T pop() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
+            throw new NoSuchElementException("Stack is empty");
         }
 
         T data = this.top.getValue();
@@ -29,7 +31,7 @@ public class Stack<T> {
 
     public T peek() {
         if (isEmpty()) {
-            throw new IllegalStateException("Stack is empty");
+            throw new NoSuchElementException("Stack is empty");
         }
 
         return this.top.getValue();
