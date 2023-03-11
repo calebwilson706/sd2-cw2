@@ -10,7 +10,7 @@ public class Deck {
         int i = 0;
         for (Suit suit : Suit.values()) {
             for (Rank rank : Rank.values()) {
-                cards[i] = rank == Rank.ACE ? new Card(rank, Suit.SPADES) : new Card(rank, suit);
+                cards[i] = new Card(rank, suit);
                 i++;
             }
         }
