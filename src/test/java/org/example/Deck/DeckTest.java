@@ -35,6 +35,36 @@ public class DeckTest {
         int expectedRemainingCards = 52 - 5;
         Assertions.assertEquals(expectedRemainingCards, deck.size(), "Wrong number of cards remaining in the deck");
     }
+
+    @Test
+    public void testSize() {
+        // Given a deck is created
+        Deck deck = new Deck();
+
+        // The size should be the amount of cards
+        Assertions.assertEquals(deck.size(), 52);
+    }
+
+    @Test
+    public void testIsEmptyFalse() {
+        // Given a deck is created
+        Deck deck = new Deck();
+
+        // The deck should not be empty
+        Assertions.assertFalse(deck.isEmpty());
+    }
+
+    @Test
+    public void testIsEmptyTrue() {
+        // Given a deck is created
+        Deck deck = new Deck();
+
+        // And all cards are dealt
+        deck.deal(52);
+
+        // The deck should not be empty
+        Assertions.assertTrue(deck.isEmpty());
+    }
 }
 
 

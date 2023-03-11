@@ -68,7 +68,7 @@ public class GoodThirteen {
             for (int i = 0; i < activeCards.length; i++) {
                 Card activeCard = activeCards[i];
 
-                if (activeCard == card) {
+                if (activeCard != null && activeCard.equals(card)) {
                     activeCards[i] = this.getReplacementCard();
                 }
             }
@@ -78,9 +78,9 @@ public class GoodThirteen {
     }
 
     private Card getReplacementCard() {
-        return this.deck.size() > 0
-                ? deck.deal(1)[0]
-                : null;
+        return this.deck.isEmpty()
+                ? null
+                : deck.deal(1)[0];
     }
 
     public LinkedList<Card[]> getValidMoves() {
@@ -118,6 +118,10 @@ public class GoodThirteen {
             Card card = this.activeCards[i];
             System.out.println("Card " + (i + 1) + ": " + card.toString());
         }
+    }
+
+    public Card[] getActiveCards() {
+        return activeCards;
     }
 }
 

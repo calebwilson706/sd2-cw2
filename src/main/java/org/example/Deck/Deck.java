@@ -24,6 +24,10 @@ public class Deck {
         return cards.length;
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
     //Using the fisher yates shuffle - https://en.wikipedia.org/wiki/Fisher–Yates_shuffle
     public void shuffle() {
         Random random = new Random();

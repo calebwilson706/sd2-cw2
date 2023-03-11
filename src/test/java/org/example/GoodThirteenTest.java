@@ -52,11 +52,8 @@ class GoodThirteenTest {
 
     @Test
     public void testGetGameStatusWhenValidMoves() {
-        // Given there are no valid moves
-        Mockito.when(deck.deal(10)).thenReturn(new Card[]{
-                new Card(Rank.ACE, Suit.CLUBS),
-                new Card(Rank.QUEEN, Suit.HEARTS),
-        });
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
         GoodThirteen target = new GoodThirteen(deck, scanner);
 
         // When we get the game status
@@ -69,25 +66,153 @@ class GoodThirteenTest {
     @Test
     public void testGetUsersNextMoveWhenFirstCardIsThirteen() {
         // Given there is a king face up
-        Mockito.when(deck.deal(10)).thenReturn(new Card[]{
-                new Card(Rank.KING, Suit.CLUBS)
-        });
+        setUpDeckWhichDealsValidMoves();
 
         // And the king is selected
         Mockito.when(scanner.nextLine()).thenReturn("1");
         GoodThirteen target = new GoodThirteen(deck, scanner);
+        Card[] result = target.GetUsersNextMove();
 
 
         // It should return a move containing the king
         Card[] expected = new Card[]{new Card(Rank.KING, Suit.CLUBS)};
-        Assertions.assertArrayEquals(expected, target.GetUsersNextMove());
+        Assertions.assertArrayEquals(expected, result);
     }
 
-    //TODO: test valid pair
-    //TODO: test invalid input
-    //TODO: test pair which is not equal to 13
+    @Test
+    public void testGetUsersNextMoveWhenAValidPairIsSelected() {
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
 
-    //TODO: test execute move
-    // - Replace card
-    // - Replace card with null if the deck is empty
+        // And two cards which add to 13 are selected
+        Mockito.when(scanner.nextLine())
+                .thenReturn("2")
+                .thenReturn("4");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Card[] result = target.GetUsersNextMove();
+
+
+        // It should return a move containing the two cards
+        Card[] expected = new Card[]{
+                new Card(Rank.QUEEN, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.CLUBS)
+        };
+        Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testGetUsersNextMoveWhenAValidPairIsSelectedAfterAnInvalidPair() {
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
+
+        // And two cards which do not to 13 are selected
+        // Then two cards which do add to 13 are selected
+        Mockito.when(scanner.nextLine())
+                .thenReturn("3")
+                .thenReturn("1")
+                .thenReturn("2")
+                .thenReturn("4");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Card[] result = target.GetUsersNextMove();
+
+
+        // It should return a move containing the two cards
+        Card[] expected = new Card[]{
+                new Card(Rank.QUEEN, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.CLUBS)
+        };
+        Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testGetUsersNextMoveWhenAnInvalidIndexIsSelected() {
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
+
+        // And a number is entered which is an invalid index
+        // Then the king is selected
+        Mockito.when(scanner.nextLine())
+                .thenReturn("5")
+                .thenReturn("1");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Card[] result = target.GetUsersNextMove();
+
+
+        // It should return a move containing the king
+        Card[] expected = new Card[]{new Card(Rank.KING, Suit.CLUBS)};
+        Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testGetUsersNextMoveWhenThereIsAnInvalidInput() {
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
+
+        // And a number is entered which is an invalid index
+        // Then the king is selected
+        Mockito.when(scanner.nextLine())
+                .thenReturn("not a number")
+                .thenReturn("1");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Card[] result = target.GetUsersNextMove();
+
+
+        // It should return a move containing the king
+        Card[] expected = new Card[]{new Card(Rank.KING, Suit.CLUBS)};
+        Assertions.assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testExecuteUserMoveReplacesThePlayedCards() {
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+
+        // And there are cards in the deck
+        Mockito.when(deck.deal(1))
+                .thenReturn(new Card[]{ new Card(Rank.TWO, Suit.HEARTS) })
+                .thenReturn(new Card[]{ new Card(Rank.ACE, Suit.HEARTS) });
+
+        // When a valid move is played
+        target.executeUsersNextMove(new Card[]{
+                new Card(Rank.QUEEN, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.CLUBS)
+        });
+
+        // It should replace the played cards
+        Assertions.assertEquals(target.getActiveCards()[1], new Card(Rank.TWO, Suit.HEARTS));
+        Assertions.assertEquals(target.getActiveCards()[3], new Card(Rank.ACE, Suit.HEARTS));
+    }
+
+    @Test
+    public void testExecuteUserMoveWhenThereAreNoCardsInTheDeck() {
+        // Given there are valid moves
+        setUpDeckWhichDealsValidMoves();
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+
+        // And there are no cards in the deck
+        Mockito.when(deck.isEmpty())
+                .thenReturn(true);
+
+        // When a valid move is played
+        target.executeUsersNextMove(new Card[]{
+                new Card(Rank.QUEEN, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.CLUBS)
+        });
+
+        // It should not replace the played cards
+        Assertions.assertArrayEquals(target.getActiveCards(), new Card[] {
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.EIGHT, Suit.HEARTS)
+        });
+    }
+
+    private void setUpDeckWhichDealsValidMoves() {
+        Mockito.when(deck.deal(10)).thenReturn(new Card[]{
+                new Card(Rank.KING, Suit.CLUBS),
+                new Card(Rank.QUEEN, Suit.CLUBS),
+                new Card(Rank.EIGHT, Suit.HEARTS),
+                new Card(Rank.ACE, Suit.CLUBS)
+        });
+    }
 }
