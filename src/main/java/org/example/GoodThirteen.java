@@ -31,7 +31,23 @@ public class GoodThirteen {
         }
     }
 
-    public Card[] GetUsersNextMove() {
+    public void displayHint() {
+        System.out.println("Would you like a hint? Enter 'yes' if you would.");
+        String input = scanner.nextLine();
+
+        if (!input.equalsIgnoreCase("yes")) return;
+
+        System.out.println("A valid move you could play is:");
+
+        Card[] move = getValidMoves().first().getValue();
+        for (int i = 0; i < move.length; i++) {
+            Card card = move[i];
+            String prefix = "\t" + (i > 0 ? "and " : "");
+            System.out.println(prefix + card.toString());
+        }
+    }
+
+    public Card[] getUsersNextMove() {
         System.out.println("Select your next cards");
         Card firstCard = getInputCard("Enter the number for the first card.");
 
@@ -45,7 +61,7 @@ public class GoodThirteen {
             return new Card[] {firstCard, secondCard};
         } else {
             System.out.println("This is an invalid combination, please try again");
-            return GetUsersNextMove();
+            return getUsersNextMove();
         }
     }
 

@@ -10,7 +10,8 @@ public class Main {
 
         while (game.getGameStatus() == GameStatus.TO_BE_CONTINUED) {
             game.displayActiveCards();
-            Card[] nextMove = game.GetUsersNextMove();
+            game.displayHint();
+            Card[] nextMove = game.getUsersNextMove();
             game.executeUsersNextMove(nextMove);
         }
 

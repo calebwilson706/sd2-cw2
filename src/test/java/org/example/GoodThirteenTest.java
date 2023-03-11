@@ -5,20 +5,34 @@ import org.example.Deck.Deck;
 import org.example.Deck.Rank;
 import org.example.Deck.Suit;
 import org.example.Utilities.ScannerWrapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 class GoodThirteenTest {
+    private ByteArrayOutputStream outContent;
+    private PrintStream originalOut;
     private Deck deck;
 
     private ScannerWrapper scanner;
 
     @BeforeEach
     public void setUp() {
+        this.outContent = new ByteArrayOutputStream();
+        this.originalOut = System.out;
+        System.setOut(new PrintStream(outContent));
         this.deck = Mockito.mock(Deck.class);
         this.scanner = Mockito.mock(ScannerWrapper.class);
+    }
+
+    @AfterEach
+    public void restoreStreams() {
+        System.setOut(originalOut);
     }
 
     @Test
@@ -64,14 +78,14 @@ class GoodThirteenTest {
     }
 
     @Test
-    public void testGetUsersNextMoveWhenFirstCardIsThirteen() {
+    public void testgetUsersNextMoveWhenFirstCardIsKing() {
         // Given there is a king face up
         setUpDeckWhichDealsValidMoves();
 
         // And the king is selected
         Mockito.when(scanner.nextLine()).thenReturn("1");
         GoodThirteen target = new GoodThirteen(deck, scanner);
-        Card[] result = target.GetUsersNextMove();
+        Card[] result = target.getUsersNextMove();
 
 
         // It should return a move containing the king
@@ -80,7 +94,7 @@ class GoodThirteenTest {
     }
 
     @Test
-    public void testGetUsersNextMoveWhenAValidPairIsSelected() {
+    public void testgetUsersNextMoveWhenAValidPairIsSelected() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
 
@@ -89,7 +103,7 @@ class GoodThirteenTest {
                 .thenReturn("2")
                 .thenReturn("4");
         GoodThirteen target = new GoodThirteen(deck, scanner);
-        Card[] result = target.GetUsersNextMove();
+        Card[] result = target.getUsersNextMove();
 
 
         // It should return a move containing the two cards
@@ -101,7 +115,7 @@ class GoodThirteenTest {
     }
 
     @Test
-    public void testGetUsersNextMoveWhenAValidPairIsSelectedAfterAnInvalidPair() {
+    public void testgetUsersNextMoveWhenAValidPairIsSelectedAfterAnInvalidPair() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
 
@@ -113,7 +127,7 @@ class GoodThirteenTest {
                 .thenReturn("2")
                 .thenReturn("4");
         GoodThirteen target = new GoodThirteen(deck, scanner);
-        Card[] result = target.GetUsersNextMove();
+        Card[] result = target.getUsersNextMove();
 
 
         // It should return a move containing the two cards
@@ -125,7 +139,7 @@ class GoodThirteenTest {
     }
 
     @Test
-    public void testGetUsersNextMoveWhenAnInvalidIndexIsSelected() {
+    public void testgetUsersNextMoveWhenAnInvalidIndexIsSelected() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
 
@@ -135,7 +149,7 @@ class GoodThirteenTest {
                 .thenReturn("5")
                 .thenReturn("1");
         GoodThirteen target = new GoodThirteen(deck, scanner);
-        Card[] result = target.GetUsersNextMove();
+        Card[] result = target.getUsersNextMove();
 
 
         // It should return a move containing the king
@@ -144,7 +158,7 @@ class GoodThirteenTest {
     }
 
     @Test
-    public void testGetUsersNextMoveWhenThereIsAnInvalidInput() {
+    public void testgetUsersNextMoveWhenThereIsAnInvalidInput() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
 
@@ -154,7 +168,7 @@ class GoodThirteenTest {
                 .thenReturn("not a number")
                 .thenReturn("1");
         GoodThirteen target = new GoodThirteen(deck, scanner);
-        Card[] result = target.GetUsersNextMove();
+        Card[] result = target.getUsersNextMove();
 
 
         // It should return a move containing the king
@@ -205,6 +219,70 @@ class GoodThirteenTest {
                 new Card(Rank.KING, Suit.CLUBS),
                 new Card(Rank.EIGHT, Suit.HEARTS)
         });
+    }
+
+    @Test
+    public void shouldDisplayA1CardHint() {
+        // When the king is an option
+        Mockito.when(deck.deal(10)).thenReturn(new Card[]{
+                new Card(Rank.KING, Suit.CLUBS)
+        });
+
+        // And a hint is requested
+        Mockito.when(scanner.nextLine())
+                .thenReturn("yes");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        target.displayHint();
+
+        // The hint should be displayed
+        Assertions.assertEquals(outContent.toString(), """
+        Starting the game...
+        Drawing the first 10 cards.
+        Would you like a hint? Enter 'yes' if you would.
+        A valid move you could play is:
+        \tKing of Clubs
+        """);
+    }
+
+    @Test
+    public void shouldDisplayA2CardHint() {
+        // When there is a 2 card option
+        Mockito.when(deck.deal(10)).thenReturn(new Card[]{
+                new Card(Rank.QUEEN, Suit.CLUBS),
+                new Card(Rank.ACE, Suit.DIAMONDS)
+        });
+
+        // And a hint is requested
+        Mockito.when(scanner.nextLine())
+                .thenReturn("yes");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        target.displayHint();
+
+        // The hint should be displayed
+        Assertions.assertEquals(outContent.toString(), """
+        Starting the game...
+        Drawing the first 10 cards.
+        Would you like a hint? Enter 'yes' if you would.
+        A valid move you could play is:
+        \tQueen of Clubs
+        \tand Ace of Diamonds
+        """);
+    }
+
+    @Test
+    public void shouldNotDisplayACardHint() {
+        // When a hint is not requested
+        Mockito.when(scanner.nextLine())
+                .thenReturn("no");
+        GoodThirteen target = new GoodThirteen(deck, scanner);
+        target.displayHint();
+
+        // The hint should be displayed
+        Assertions.assertEquals(outContent.toString(), """
+        Starting the game...
+        Drawing the first 10 cards.
+        Would you like a hint? Enter 'yes' if you would.
+        """);
     }
 
     private void setUpDeckWhichDealsValidMoves() {

@@ -12,6 +12,10 @@ public class LinkedList<T> implements Iterable<Node<T>> {
         return head == null;
     }
 
+    public Node<T> first() {
+        return head;
+    }
+
     public Node<T> last() {
         Node<T> lastNode = null;
 

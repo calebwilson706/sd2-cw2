@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="Test on push">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="update action versions">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataStructures/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataStructures/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/DataStructures/LinkedListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/DataStructures/LinkedListTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteenTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +83,7 @@
       <recent name="org.example.DataStructures" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Coursework2 [test]">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Coursework2.main" />
@@ -115,7 +118,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="DeckTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LinkedListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -128,7 +131,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.Deck.DeckTest&quot;" />
+            <option value="&quot;org.example.DataStructures.LinkedListTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -138,7 +141,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GoodThirteenTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LinkedListTest.testFirst" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -151,7 +154,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.GoodThirteenTest&quot;" />
+            <option value="&quot;org.example.DataStructures.LinkedListTest.testFirst&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -184,11 +187,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.LinkedListTest" />
+        <item itemvalue="Gradle.LinkedListTest.testFirst" />
         <item itemvalue="Gradle.Coursework2 [test]" />
         <item itemvalue="Gradle.Tests in 'Coursework2'" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Gradle.DeckTest" />
-        <item itemvalue="Gradle.GoodThirteenTest" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +239,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678550976406</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Test on push">
+      <created>1678551471925</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678551471925</updated>
+    </task>
+    <task id="LOCAL-00007" summary="update action versions">
+      <created>1678551606598</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1678551606598</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -245,7 +262,8 @@
     <MESSAGE value="Finish initial game - and some tests" />
     <MESSAGE value="Finish testing" />
     <MESSAGE value="Test on push" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test on push" />
+    <MESSAGE value="update action versions" />
+    <option name="LAST_COMMIT_MESSAGE" value="update action versions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

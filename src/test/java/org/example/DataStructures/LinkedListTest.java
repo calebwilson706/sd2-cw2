@@ -36,6 +36,32 @@ class LinkedListTest {
         assertFalse(list.contains(4));
     }
 
+    @Test
+    public void testFirst() {
+        // Given a list is created
+        LinkedList<Integer> list = new LinkedList<>();
+
+        // When an item is added to the list
+        list.append(1);
+
+        // First should return that item
+        assertEquals(list.first().getValue(), 1);
+    }
+
+    @Test
+    public void testLast() {
+        // Given a list is created
+        LinkedList<Integer> list = new LinkedList<>();
+
+        // When an items are added to the list
+        list.append(1);
+        list.append(2);
+        list.append(3);
+
+        // First should return that item
+        assertEquals(list.last().getValue(), 3);
+    }
+
     private static <T> String listToString(LinkedList<T> list) {
         StringBuilder sb = new StringBuilder();
         for (Node<T> item : list) {
