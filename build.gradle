@@ -17,4 +17,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
+
+build.dependsOn(test)
