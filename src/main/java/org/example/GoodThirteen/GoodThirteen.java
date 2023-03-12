@@ -1,19 +1,23 @@
-package org.example;
+package org.example.GoodThirteen;
 
 import org.example.DataStructures.LinkedList;
 import org.example.Deck.Card;
 import org.example.Deck.Deck;
+import org.example.GameStatus;
 import org.example.Utilities.ArrayUtilities;
-import org.example.Utilities.ScannerWrapper;
+import org.example.Utilities.CardUtilities;
+import org.example.Utilities.InputService;
+
+import java.util.Arrays;
 
 public class GoodThirteen {
     private final Deck deck;
     private Card[] activeCards;
 
-    private final ScannerWrapper scanner;
+    private final InputService inputService;
 
-    public GoodThirteen(Deck deck, ScannerWrapper scanner) {
-        this.scanner = scanner;
+    public GoodThirteen(Deck deck, InputService inputService) {
+        this.inputService = inputService;
         System.out.println("Starting the game...");
         this.deck = deck;
         this.deck.shuffle();
@@ -32,10 +36,7 @@ public class GoodThirteen {
     }
 
     public void displayHint() {
-        System.out.println("Would you like a hint? Enter 'yes' if you would.");
-        String input = scanner.nextLine();
-
-        if (!input.equalsIgnoreCase("yes")) return;
+        if (!inputService.getYesOrNoAnswer("Would you like a hint?")) return;
 
         System.out.println("A valid move you could play is:");
 
@@ -68,7 +69,7 @@ public class GoodThirteen {
     private Card getInputCard(String description) {
         System.out.println(description);
 
-        String firstCardIndexString = scanner.nextLine();
+        String firstCardIndexString = inputService.nextLine();
 
         try {
             int firstCardIndex = Integer.parseInt(firstCardIndexString) - 1;
@@ -130,14 +131,11 @@ public class GoodThirteen {
 
     public void displayActiveCards() {
         System.out.println("The face up cards are:");
-        for (int i = 0; i < this.activeCards.length; i++) {
-            Card card = this.activeCards[i];
-            System.out.println("Card " + (i + 1) + ": " + card.toString());
-        }
+        CardUtilities.displayListOfCards(this.activeCards);
     }
 
     public Card[] getActiveCards() {
-        return activeCards;
+        return Arrays.copyOf(activeCards, activeCards.length);
     }
 }
 

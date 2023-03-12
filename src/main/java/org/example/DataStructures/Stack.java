@@ -21,7 +21,7 @@ public class Stack<T> {
 
     public T pop() {
         if (isEmpty()) {
-            throw new NoSuchElementException("Stack is empty");
+            return null;
         }
 
         T data = this.top.getValue();

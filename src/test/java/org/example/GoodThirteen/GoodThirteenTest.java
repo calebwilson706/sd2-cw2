@@ -1,10 +1,11 @@
-package org.example;
+package org.example.GoodThirteen;
 
 import org.example.Deck.Card;
 import org.example.Deck.Deck;
 import org.example.Deck.Rank;
 import org.example.Deck.Suit;
-import org.example.Utilities.ScannerWrapper;
+import org.example.GameStatus;
+import org.example.Utilities.InputService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +20,7 @@ class GoodThirteenTest {
     private PrintStream originalOut;
     private Deck deck;
 
-    private ScannerWrapper scanner;
+    private InputService scanner;
 
     @BeforeEach
     public void setUp() {
@@ -27,7 +28,7 @@ class GoodThirteenTest {
         this.originalOut = System.out;
         System.setOut(new PrintStream(outContent));
         this.deck = Mockito.mock(Deck.class);
-        this.scanner = Mockito.mock(ScannerWrapper.class);
+        this.scanner = Mockito.mock(InputService.class);
     }
 
     @AfterEach

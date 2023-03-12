@@ -44,7 +44,7 @@ public class StackTest {
     @Test
     public void testPopEmpty() {
         Stack<Object> stack = new Stack<>();
-        assertThrows(NoSuchElementException.class, stack::pop);
+        assertNull(stack.pop());
     }
 
     @Test
