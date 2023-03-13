@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="fix tests">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DataStructures/Queue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistoryFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/DataStructures/QueueTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenManagerTest.java" afterDir="false" />
+    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="change history to be a queue and start work on manager test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utilities/InputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utilities/InputService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenHistoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenHistoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Utilities/InputServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Utilities/InputServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +81,7 @@
       <recent name="org.example.Deck" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.GoodThirteenManagerTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <envs>
         <env name="TERM" value="xterm-256color" />
@@ -178,7 +167,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="QueueTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GoodThirteenManagerTest.testPlayUserControlledGamePlayThrough" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -191,7 +180,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.DataStructures.QueueTest&quot;" />
+            <option value="&quot;org.example.GoodThirteen.GoodThirteenManagerTest.testPlayUserControlledGamePlayThrough&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -203,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.GoodThirteenManagerTest" />
+        <item itemvalue="Gradle.GoodThirteenManagerTest.testPlayUserControlledGamePlayThrough" />
         <item itemvalue="Gradle.GoodThirteenHistoryTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.GoodThirteenManagerTest.testPlayUserControlledDoesNotReplayHistory" />
-        <item itemvalue="Gradle.QueueTest" />
       </list>
     </recent_temporary>
   </component>
@@ -290,7 +279,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678714513344</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="change history to be a queue and start work on manager test">
+      <created>1678736075237</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678736075237</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -303,7 +299,8 @@
     <MESSAGE value="Add hint functionality" />
     <MESSAGE value="Implement history feature" />
     <MESSAGE value="fix tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix tests" />
+    <MESSAGE value="change history to be a queue and start work on manager test" />
+    <option name="LAST_COMMIT_MESSAGE" value="change history to be a queue and start work on manager test" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Coursework2$Main.ic" NAME="Main Coverage Results" MODIFIED="1678550241586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
