@@ -20,7 +20,7 @@ class GoodThirteenTest {
     private PrintStream originalOut;
     private Deck deck;
 
-    private InputService scanner;
+    private InputService inputService;
 
     @BeforeEach
     public void setUp() {
@@ -28,7 +28,7 @@ class GoodThirteenTest {
         this.originalOut = System.out;
         System.setOut(new PrintStream(outContent));
         this.deck = Mockito.mock(Deck.class);
-        this.scanner = Mockito.mock(InputService.class);
+        this.inputService = Mockito.mock(InputService.class);
     }
 
     @AfterEach
@@ -40,7 +40,7 @@ class GoodThirteenTest {
     public void testGetGameStatusWhenActiveCardsIsEmpty() {
         // Given there are no active cards
         Mockito.when(deck.deal(10)).thenReturn(new Card[]{});
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
 
         // When we get the game status
         GameStatus status = target.getGameStatus();
@@ -56,7 +56,7 @@ class GoodThirteenTest {
                 new Card(Rank.ACE, Suit.CLUBS),
                 new Card(Rank.JACK, Suit.HEARTS),
         });
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
 
         // When we get the game status
         GameStatus status = target.getGameStatus();
@@ -69,7 +69,7 @@ class GoodThirteenTest {
     public void testGetGameStatusWhenValidMoves() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
 
         // When we get the game status
         GameStatus status = target.getGameStatus();
@@ -84,8 +84,8 @@ class GoodThirteenTest {
         setUpDeckWhichDealsValidMoves();
 
         // And the king is selected
-        Mockito.when(scanner.nextLine()).thenReturn("1");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Mockito.when(inputService.nextLine()).thenReturn("1");
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         Card[] result = target.getUsersNextMove();
 
 
@@ -100,10 +100,10 @@ class GoodThirteenTest {
         setUpDeckWhichDealsValidMoves();
 
         // And two cards which add to 13 are selected
-        Mockito.when(scanner.nextLine())
+        Mockito.when(inputService.nextLine())
                 .thenReturn("2")
                 .thenReturn("4");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         Card[] result = target.getUsersNextMove();
 
 
@@ -122,12 +122,12 @@ class GoodThirteenTest {
 
         // And two cards which do not to 13 are selected
         // Then two cards which do add to 13 are selected
-        Mockito.when(scanner.nextLine())
+        Mockito.when(inputService.nextLine())
                 .thenReturn("3")
                 .thenReturn("1")
                 .thenReturn("2")
                 .thenReturn("4");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         Card[] result = target.getUsersNextMove();
 
 
@@ -146,10 +146,10 @@ class GoodThirteenTest {
 
         // And a number is entered which is an invalid index
         // Then the king is selected
-        Mockito.when(scanner.nextLine())
+        Mockito.when(inputService.nextLine())
                 .thenReturn("5")
                 .thenReturn("1");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         Card[] result = target.getUsersNextMove();
 
 
@@ -165,10 +165,10 @@ class GoodThirteenTest {
 
         // And a number is entered which is an invalid index
         // Then the king is selected
-        Mockito.when(scanner.nextLine())
+        Mockito.when(inputService.nextLine())
                 .thenReturn("not a number")
                 .thenReturn("1");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         Card[] result = target.getUsersNextMove();
 
 
@@ -181,7 +181,7 @@ class GoodThirteenTest {
     public void testExecuteUserMoveReplacesThePlayedCards() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
 
         // And there are cards in the deck
         Mockito.when(deck.deal(1))
@@ -203,7 +203,7 @@ class GoodThirteenTest {
     public void testExecuteUserMoveWhenThereAreNoCardsInTheDeck() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
 
         // And there are no cards in the deck
         Mockito.when(deck.isEmpty())
@@ -230,16 +230,15 @@ class GoodThirteenTest {
         });
 
         // And a hint is requested
-        Mockito.when(scanner.nextLine())
-                .thenReturn("yes");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Mockito.when(inputService.getYesOrNoAnswer(Mockito.anyString()))
+                .thenReturn(true);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         target.displayHint();
 
         // The hint should be displayed
         Assertions.assertEquals(outContent.toString(), """
         Starting the game...
         Drawing the first 10 cards.
-        Would you like a hint? Enter 'yes' if you would.
         A valid move you could play is:
         \tKing of Clubs
         """);
@@ -254,16 +253,15 @@ class GoodThirteenTest {
         });
 
         // And a hint is requested
-        Mockito.when(scanner.nextLine())
-                .thenReturn("yes");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Mockito.when(inputService.getYesOrNoAnswer(Mockito.anyString()))
+                .thenReturn(true);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         target.displayHint();
 
         // The hint should be displayed
         Assertions.assertEquals(outContent.toString(), """
         Starting the game...
         Drawing the first 10 cards.
-        Would you like a hint? Enter 'yes' if you would.
         A valid move you could play is:
         \tQueen of Clubs
         \tand Ace of Diamonds
@@ -273,16 +271,15 @@ class GoodThirteenTest {
     @Test
     public void shouldNotDisplayACardHint() {
         // When a hint is not requested
-        Mockito.when(scanner.nextLine())
-                .thenReturn("no");
-        GoodThirteen target = new GoodThirteen(deck, scanner);
+        Mockito.when(inputService.getYesOrNoAnswer(Mockito.anyString()))
+                .thenReturn(false);
+        GoodThirteen target = new GoodThirteen(deck, inputService);
         target.displayHint();
 
-        // The hint should be displayed
+        // The hint should not be displayed
         Assertions.assertEquals(outContent.toString(), """
         Starting the game...
         Drawing the first 10 cards.
-        Would you like a hint? Enter 'yes' if you would.
         """);
     }
 

@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="Add hint functionality">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Utilities/CardUtilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataStructures/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataStructures/Stack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utilities/ScannerWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utilities/InputService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/DataStructures/StackTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/DataStructures/StackTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenHistoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenHistoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="Implement history feature" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,7 +78,7 @@
       <recent name="org.example.DataStructures" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.InputServiceTest">
+  <component name="RunManager" selected="Gradle.GoodThirteenHistoryTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Coursework2.main" />
@@ -103,6 +91,29 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="GoodThirteenHistoryTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;org.example.GoodThirteen.GoodThirteenHistoryTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="GoodThirteenTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -173,36 +184,13 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="LinkedListTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;org.example.DataStructures.LinkedListTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.GoodThirteenHistoryTest" />
         <item itemvalue="Gradle.InputServiceTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Gradle.GoodThirteenTest" />
         <item itemvalue="Gradle.GoodThirteenTest.shouldDisplayA1CardHint" />
-        <item itemvalue="Gradle.LinkedListTest" />
       </list>
     </recent_temporary>
   </component>
@@ -271,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678554562429</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implement history feature">
+      <created>1678656917959</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678656917959</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -282,7 +277,8 @@
     <MESSAGE value="Test on push" />
     <MESSAGE value="update action versions" />
     <MESSAGE value="Add hint functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add hint functionality" />
+    <MESSAGE value="Implement history feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement history feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
