@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="Implement history feature" />
+    <list default="true" id="c5bb5908-841f-4063-8f1a-2c3f1fe7f349" name="Changes" comment="fix tests">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/DataStructures/Queue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistoryFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/DataStructures/QueueTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/GoodThirteen/GoodThirteenManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Utilities/InputService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Utilities/InputService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenHistoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenHistoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Utilities/InputServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Utilities/InputServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,8 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -71,20 +85,23 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.DataStructures" />
       <recent name="org.example.GoodThirteen" />
       <recent name="org.example.Utilities" />
       <recent name="org.example" />
       <recent name="org.example.Deck" />
-      <recent name="org.example.DataStructures" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.GoodThirteenHistoryTest">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <envs>
+        <env name="TERM" value="xterm-256color" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="Coursework2.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.GoodThirteen.*" />
+          <option name="PATTERN" value="org.example.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +132,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GoodThirteenTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GoodThirteenManagerTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -128,7 +145,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.GoodThirteenTest&quot;" />
+            <option value="&quot;org.example.GoodThirteen.GoodThirteenManagerTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -138,7 +155,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GoodThirteenTest.shouldDisplayA1CardHint" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="GoodThirteenManagerTest.testPlayUserControlledDoesNotReplayHistory" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -151,7 +168,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.GoodThirteenTest.shouldDisplayA1CardHint&quot;" />
+            <option value="&quot;org.example.GoodThirteen.GoodThirteenManagerTest.testPlayUserControlledDoesNotReplayHistory&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -161,7 +178,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="InputServiceTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="QueueTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -174,7 +191,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;org.example.Utilities.InputServiceTest&quot;" />
+            <option value="&quot;org.example.DataStructures.QueueTest&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -186,11 +203,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.GoodThirteenHistoryTest" />
-        <item itemvalue="Gradle.InputServiceTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Gradle.GoodThirteenTest" />
-        <item itemvalue="Gradle.GoodThirteenTest.shouldDisplayA1CardHint" />
+        <item itemvalue="Gradle.GoodThirteenManagerTest" />
+        <item itemvalue="Gradle.GoodThirteenHistoryTest" />
+        <item itemvalue="Gradle.GoodThirteenManagerTest.testPlayUserControlledDoesNotReplayHistory" />
+        <item itemvalue="Gradle.QueueTest" />
       </list>
     </recent_temporary>
   </component>
@@ -266,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678656917959</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix tests">
+      <created>1678714513344</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1678714513344</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -278,18 +302,8 @@
     <MESSAGE value="update action versions" />
     <MESSAGE value="Add hint functionality" />
     <MESSAGE value="Implement history feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement history feature" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/org/example/GoodThirteen/GoodThirteenTest.java</url>
-          <line>197</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="fix tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Coursework2$Main.ic" NAME="Main Coverage Results" MODIFIED="1678550241586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

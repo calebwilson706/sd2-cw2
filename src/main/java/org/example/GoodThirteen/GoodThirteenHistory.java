@@ -1,22 +1,30 @@
 package org.example.GoodThirteen;
 
-import org.example.DataStructures.Stack;
+import org.example.DataStructures.Queue;
 import org.example.Deck.Card;
 import org.example.Utilities.CardUtilities;
+import org.example.Utilities.InputService;
 
-public class GoodThirteenHistory extends Stack<GoodThirteenHistoryEvent> {
+import java.io.IOException;
+
+public class GoodThirteenHistory extends Queue<GoodThirteenHistoryEvent> {
     private final Card[] initialActiveCards;
+    private final InputService inputService;
 
-    public GoodThirteenHistory(Card[] initialActiveCards) {
+    public GoodThirteenHistory(Card[] initialActiveCards, InputService inputService) {
         super();
 
         this.initialActiveCards = initialActiveCards;
+        this.inputService = inputService;
     }
 
-    public void replayHistory() {
-        GoodThirteenHistoryEvent current = this.pop();
+    public void replayHistory() throws IOException {
+        System.out.println("The game started with:");
+        CardUtilities.displayListOfCards(this.initialActiveCards);
 
+        GoodThirteenHistoryEvent current = this.dequeue();
         while (current != null) {
+            System.out.println("\n");
             System.out.println("You played:");
             CardUtilities.displayListOfCards(current.move());
 
@@ -27,14 +35,12 @@ public class GoodThirteenHistory extends Stack<GoodThirteenHistoryEvent> {
                 System.out.println("To win the game.");
             }
 
-            System.out.println("\n\n");
-            current = this.pop();
+            inputService.waitForEnterKeyPress();
+            current = this.dequeue();
         }
-
-        System.out.println("The game started with:");
-        CardUtilities.displayListOfCards(this.initialActiveCards);
     }
 }
 
 record GoodThirteenHistoryEvent(Card[] move, Card[] newActiveCards) {
 }
+

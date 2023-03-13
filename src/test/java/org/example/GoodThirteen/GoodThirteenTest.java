@@ -116,7 +116,7 @@ class GoodThirteenTest {
     }
 
     @Test
-    public void testgetUsersNextMoveWhenAValidPairIsSelectedAfterAnInvalidPair() {
+    public void testGetUsersNextMoveWhenAValidPairIsSelectedAfterAnInvalidPair() {
         // Given there are valid moves
         setUpDeckWhichDealsValidMoves();
 

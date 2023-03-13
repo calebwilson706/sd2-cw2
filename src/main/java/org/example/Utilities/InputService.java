@@ -1,5 +1,6 @@
 package org.example.Utilities;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -19,5 +20,11 @@ public class InputService {
         String input = scanner.nextLine();
 
         return input.equalsIgnoreCase("yes");
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    public void waitForEnterKeyPress() throws IOException {
+        System.out.println("Press the enter key to continue...");
+        System.in.read();
     }
 }
